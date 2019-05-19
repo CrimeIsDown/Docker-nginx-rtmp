@@ -2,17 +2,10 @@ version: '3'
 services:
   web:
     build: .
-    networks:
-      ingress:
-        aliases:
-         - streaming-web
+    restart: always
     ports:
-     - "8080:8080"
+     - "8080"
      - "1935:1935"
     volumes:
      - ./nginx.conf:/opt/nginx/conf/nginx.conf
 
-networks:
-  ingress:
-    external:
-      name: ingress_default
